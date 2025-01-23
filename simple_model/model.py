@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
+from custom_train_test import train_test
 
 def train_model(X_train, y_train):
     model = RandomForestClassifier(n_estimators=100)
@@ -14,5 +15,7 @@ def test_model(model, X_test, y_test):
     accuracy = accuracy_score(y_test, y_pred)
     return accuracy
 
-def prediction(model, X_test):
+def prediction(model, dataset):
+    X_train, X_test, y_train, y_test = train_test(dataset)
+    model = train_model(X_train, y_train)
     return model.predict(X_test)
