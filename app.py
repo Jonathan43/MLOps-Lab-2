@@ -1,5 +1,5 @@
 import FastAPI
-import simple_model
+from simple_model import import_data, train_test, train_model, test_model
 
 
 app = FastAPI()
