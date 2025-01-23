@@ -1,4 +1,12 @@
-import FastAPI
+import subprocess
+import sys
+
+try:
+    import fastapi
+except ImportError:
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "fastapi"])
+
+from fastapi import FastAPI
 from simple_model.importing_data import import_data
 from simple_model.custom_train_test import train_test
 from simple_model.model import train_model, test_model
