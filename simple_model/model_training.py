@@ -9,13 +9,3 @@ def train_model(X_train, y_train):
     model = RandomForestClassifier(n_estimators=100)
     model.fit(X_train, y_train)
     return model
-
-def test_model(model, X_test, y_test):
-    y_pred = model.predict(X_test)
-    accuracy = accuracy_score(y_test, y_pred)
-    return accuracy
-
-def prediction(model, dataset):
-    X_train, X_test, y_train, y_test = train_test(dataset)
-    model = train_model(X_train, y_train)
-    return model.predict(X_test)
