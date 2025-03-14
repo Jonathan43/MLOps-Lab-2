@@ -1,22 +1,31 @@
 import numpy as np
 import pandas as pd
+import uvicorn
 from fastapi import FastAPI
+from pydantic import BaseModel
 from simple_model.importing_data import import_data
 from simple_model.model_training import train_model
 from simple_model.model_inference import prediction
 
 # Training the model
-
 dataset = import_data()
 model = train_model(dataset)
 
 app = FastAPI()
 
-@app.post("/predict", response_model=prediction, model = model)
-def predict(data: datapoint):
-    # Use the loaded model to make a prediction
-    prediction = prediction(model, datapoint)
-    return {"prediction": int(prediction[0])}
+# We define the input data format
+class Flower(BaseModel):
+    sepal_length: float
+    sepal_width: float
+    petal_length: float
+    petal_width: float
+
+
+@app.post("/predict")
+def predict(data: Flower):
+    input_array = np.array([[data.sepal_length, data.sepal_width, data.petal_length, data.petal_width]])
+    pred = prediction(model, input_array)
+    return {"prediction": pred[0]}
 
 # Run the FastAPI app on localhost
 if __name__ == "__main__":
