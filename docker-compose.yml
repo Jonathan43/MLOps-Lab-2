@@ -1,5 +1,6 @@
 services:
   backend:
+    image: Jonathan43/fastapi-backend:latest
     build:
       context: .
       dockerfile: Dockerfile
@@ -10,8 +11,9 @@ services:
       - ./app:/app 
 
   frontend:
+    image: Jonathan43/streamlit-frontend:latest
     build:
-      context: .
+      context: .s
       dockerfile: frontend.Dockerfile
     container_name: streamlit-frontend
     ports:
