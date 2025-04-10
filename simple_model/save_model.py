@@ -1,6 +1,6 @@
 import pickle
-from simple_model.importing_data import import_data
-from simple_model.model_training import train_model
+from importing_data import import_data
+from model_training import train_model
 
 # Train and save the model
 dataset = import_data()
