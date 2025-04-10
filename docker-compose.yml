@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile
     image: fastapi-backend:latest
-    container_name: fastapi-backend
+    container_name: Jonathan43/fastapi-backend
     ports:
       - "8000:8000"
     volumes:
@@ -12,9 +12,9 @@ services:
 
   frontend:
     build:
-      context: .s
+      context: .
       dockerfile: frontend.Dockerfile
-    image: streamlit-frontend:latest
+    image: Jonathan43/streamlit-frontend:latest
     container_name: streamlit-frontend
     ports:
       - "8501:8501"
