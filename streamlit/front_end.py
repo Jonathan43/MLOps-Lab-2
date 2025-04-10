@@ -9,7 +9,7 @@ petal_length = st.number_input("Petal Length", min_value=0.0, step=0.1)
 petal_width = st.number_input("Petal Width", min_value=0.0, step=0.1)
 
 if st.button("Predict"):
-    url = "http://fastapi-backend:8000/predict"
+    url = "http://backend:8000/predict"
     payload = {
         "sepal_length": sepal_length,
         "sepal_width": sepal_width,
