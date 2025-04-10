@@ -1,9 +1,9 @@
 services:
   backend:
-    image: Jonathan43/fastapi-backend:latest
     build:
       context: .
       dockerfile: Dockerfile
+    image: fastapi-backend:latest
     container_name: fastapi-backend
     ports:
       - "8000:8000"
@@ -11,10 +11,10 @@ services:
       - ./app:/app 
 
   frontend:
-    image: Jonathan43/streamlit-frontend:latest
     build:
       context: .s
       dockerfile: frontend.Dockerfile
+    image: streamlit-frontend:latest
     container_name: streamlit-frontend
     ports:
       - "8501:8501"
